@@ -1,5 +1,6 @@
 package com.diagnostico.proyecto.Arqfre.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 
@@ -68,7 +69,7 @@ public class Proyecto implements Serializable {
 
     @Column(name = "Otros_Tercer_Nivel")
     private String otrosTercerNivel;
-
+    @JsonIgnore
     @ManyToMany
     @JoinTable(
             name = "Proyecto_PrimerNivel",
@@ -76,7 +77,7 @@ public class Proyecto implements Serializable {
             inverseJoinColumns = @JoinColumn(name = "primerNivel_id")
     )
     private List<PrimerNivel> primerNivel;
-
+    @JsonIgnore
     @ManyToMany
     @JoinTable(
             name = "Proyecto_SegundoNivel",
@@ -84,7 +85,7 @@ public class Proyecto implements Serializable {
             inverseJoinColumns = @JoinColumn(name = "segundoNivel_id")
     )
     private List<SegundoNivel> segundoNivel;
-
+    @JsonIgnore
     @ManyToMany
     @JoinTable(
             name = "Proyecto_TercerNivel",

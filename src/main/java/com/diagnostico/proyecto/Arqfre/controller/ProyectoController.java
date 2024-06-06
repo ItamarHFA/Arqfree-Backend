@@ -6,10 +6,10 @@ import com.diagnostico.proyecto.Arqfre.service.IProyectoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -22,5 +22,13 @@ public class ProyectoController {
     public ResponseEntity<List<Proyecto>> listarEstiloFachada(){
         List<Proyecto> lista = service.listar();
         return new ResponseEntity<>(lista, HttpStatus.OK);
+    }
+
+    @PostMapping
+    public ResponseEntity<Object> registrar(@RequestBody Proyecto pro) {
+        Proyecto proyecto = service.registrar(pro);
+        // localhost:8080/pacientes/1
+        URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(proyecto.getId()).toUri();
+        return ResponseEntity.created(location).build();
     }
 }
