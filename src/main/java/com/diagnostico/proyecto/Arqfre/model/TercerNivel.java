@@ -6,11 +6,12 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name="estilo_fachada")
+@Table(name="tercer_nivel")
 @Data
-public class EstiloFachada implements Serializable {
+public class TercerNivel implements Serializable {
 
     private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

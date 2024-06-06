@@ -1,14 +1,20 @@
 package com.diagnostico.proyecto.Arqfre.service.impl;
 
 import com.diagnostico.proyecto.Arqfre.model.Proyecto;
+import com.diagnostico.proyecto.Arqfre.repository.IProyectoRepo;
 import com.diagnostico.proyecto.Arqfre.service.IProyectoService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class ProyectoServiceImpl implements IProyectoService {
+
+    @Autowired
+    private IProyectoRepo repo;
     @Override
     public Proyecto registrar(Proyecto proyecto) {
-        return null;
+        return repo.save(proyecto);
     }
 
     @Override
@@ -23,7 +29,7 @@ public class ProyectoServiceImpl implements IProyectoService {
 
     @Override
     public List<Proyecto> listar() {
-        return null;
+        return repo.findAll();
     }
 
     @Override

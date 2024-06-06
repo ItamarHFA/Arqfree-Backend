@@ -1,11 +1,17 @@
 package com.diagnostico.proyecto.Arqfre.service.impl;
 
 import com.diagnostico.proyecto.Arqfre.model.EstiloFachada;
+import com.diagnostico.proyecto.Arqfre.repository.IEstiloFachadaRepo;
+import com.diagnostico.proyecto.Arqfre.repository.IPisoRepo;
 import com.diagnostico.proyecto.Arqfre.service.IEstiloFachadaService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class EstiloFachadaServiceImpl implements IEstiloFachadaService {
+    @Autowired
+    private IEstiloFachadaRepo repo;
     @Override
     public EstiloFachada registrar(EstiloFachada estiloFachada) {
         return null;
@@ -23,7 +29,7 @@ public class EstiloFachadaServiceImpl implements IEstiloFachadaService {
 
     @Override
     public List<EstiloFachada> listar() {
-        return null;
+        return repo.findAll();
     }
 
     @Override
