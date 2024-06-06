@@ -38,4 +38,9 @@ public class ProyectoServiceImpl implements IProyectoService {
     public void eliminar(Integer id) {
 
     }
+
+    @Override
+    public List<Proyecto> obtenerProyectosDeHoy() {
+        return repo.findAllByFechaCreacion();
+    }
 }

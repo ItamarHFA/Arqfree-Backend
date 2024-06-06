@@ -31,4 +31,9 @@ public class ProyectoController {
         URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(proyecto.getId()).toUri();
         return ResponseEntity.created(location).build();
     }
+
+    @GetMapping("/hoy")
+    public List<Proyecto> obtenerProyectosDeHoy() {
+        return service.obtenerProyectosDeHoy();
+    }
 }

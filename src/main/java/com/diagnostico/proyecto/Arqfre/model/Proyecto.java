@@ -6,6 +6,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -94,4 +95,11 @@ public class Proyecto implements Serializable {
     )
     private List<TercerNivel> tercerNivel;
 
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date fechaCreacion;
+
+    @PrePersist
+    protected void onCreate() {
+        fechaCreacion = new Date();
+    }
 }
