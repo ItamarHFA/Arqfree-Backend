@@ -3,15 +3,17 @@ package com.diagnostico.proyecto.Arqfre.service.impl;
 import com.diagnostico.proyecto.Arqfre.model.Piso;
 import com.diagnostico.proyecto.Arqfre.repository.IPisoRepo;
 import com.diagnostico.proyecto.Arqfre.service.IPisoService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+@RequiredArgsConstructor
 @Service
 public class PisoServiceImpl implements IPisoService {
 
-    @Autowired
-    private IPisoRepo repo;
+
+    private final IPisoRepo repo;
     @Override
     public Piso registrar(Piso piso) {
         return null;

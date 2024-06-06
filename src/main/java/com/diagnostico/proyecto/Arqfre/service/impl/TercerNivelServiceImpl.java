@@ -3,15 +3,17 @@ package com.diagnostico.proyecto.Arqfre.service.impl;
 import com.diagnostico.proyecto.Arqfre.model.TercerNivel;
 import com.diagnostico.proyecto.Arqfre.repository.ITercerNivelRepo;
 import com.diagnostico.proyecto.Arqfre.service.ITercerNivelService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+@RequiredArgsConstructor
 @Service
 public class TercerNivelServiceImpl implements ITercerNivelService {
 
-    @Autowired
-    private ITercerNivelRepo repo;
+
+    private final ITercerNivelRepo repo;
     @Override
     public TercerNivel registrar(TercerNivel tercerNivel) {
         return null;
