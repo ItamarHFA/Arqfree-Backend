@@ -23,7 +23,7 @@ public class Necesidad implements Serializable {
     private String descripcion;
 
     @ManyToOne
-    @JoinColumn(name = "id_proyecto", nullable = false)
+    @JoinColumn(name = "id_proyecto", nullable = false,foreignKey = @ForeignKey(name = "fk_necesidad_proyecto"))
     private Proyecto proyecto;
 
 }

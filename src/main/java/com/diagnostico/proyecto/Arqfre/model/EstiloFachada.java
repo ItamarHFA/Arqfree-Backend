@@ -19,6 +19,6 @@ public class EstiloFachada implements Serializable {
     private String estilo;
 
     @ManyToOne
-    @JoinColumn(name = "id_cliente", nullable = false)
+    @JoinColumn(name = "id_cliente", nullable = false,foreignKey = @ForeignKey(name = "fk_estilo_fachada_cliente"))
     private Cliente cliente;
 }

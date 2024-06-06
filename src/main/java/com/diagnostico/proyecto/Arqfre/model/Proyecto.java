@@ -8,7 +8,7 @@ import java.io.Serializable;
 import java.util.List;
 
 @Entity
-@Table(name="proycto")
+@Table(name="proyecto")
 @Data
 public class Proyecto implements Serializable {
 
@@ -29,7 +29,7 @@ public class Proyecto implements Serializable {
     private String pisos;
 
     @ManyToOne
-    @JoinColumn(name = "id_cliente", nullable = false)
+    @JoinColumn(name = "id_cliente", nullable = false, foreignKey = @ForeignKey(name = "fk_proyecto_cliente"))
     private Cliente cliente;
 
     @OneToMany(mappedBy = "proyecto", cascade = CascadeType.ALL)

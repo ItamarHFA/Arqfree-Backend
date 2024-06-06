@@ -36,6 +36,6 @@ public class Preferencia implements Serializable {
     private String referenciaVivienda;
 
     @OneToOne
-    @JoinColumn(name = "id_cliente", nullable = false)
+    @JoinColumn(name = "id_cliente", nullable = false,foreignKey = @ForeignKey(name = "fk_preferencia_cliente"))
     private Cliente cliente;
 }
