@@ -7,6 +7,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 @RequiredArgsConstructor
 @Service
@@ -41,6 +44,10 @@ public class ProyectoServiceImpl implements IProyectoService {
 
     @Override
     public List<Proyecto> obtenerProyectosDeHoy() {
-        return repo.findAllByFechaCreacion();
+        LocalDate today = LocalDate.now();
+        LocalDateTime startOfDay = today.atStartOfDay();
+        LocalDateTime endOfDay = today.atTime(LocalTime.MAX);
+
+        return repo.findAllByFechaCreacion(startOfDay, endOfDay);
     }
 }

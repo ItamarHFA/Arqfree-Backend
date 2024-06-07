@@ -1,11 +1,14 @@
 package com.diagnostico.proyecto.Arqfre.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -95,11 +98,12 @@ public class Proyecto implements Serializable {
     )
     private List<TercerNivel> tercerNivel;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaCreacion;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd hh:mm a")
+    @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm a")
+    private LocalDateTime fechaCreacion;
 
     @PrePersist
     protected void onCreate() {
-        fechaCreacion = new Date();
+        fechaCreacion = LocalDateTime.now();
     }
 }
