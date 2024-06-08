@@ -1,6 +1,7 @@
 package com.diagnostico.proyecto.Arqfre.controller;
 
-import com.diagnostico.proyecto.Arqfre.model.EstiloFachada;
+
+
 import com.diagnostico.proyecto.Arqfre.model.Proyecto;
 import com.diagnostico.proyecto.Arqfre.service.IProyectoService;
 import lombok.RequiredArgsConstructor;
@@ -36,4 +37,5 @@ public class ProyectoController {
     public List<Proyecto> obtenerProyectosDeHoy() {
         return service.obtenerProyectosDeHoy();
     }
+
 }

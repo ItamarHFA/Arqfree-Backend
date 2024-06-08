@@ -1,8 +1,11 @@
 package com.diagnostico.proyecto.Arqfre.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
+import org.hibernate.annotations.BatchSize;
 import org.springframework.format.annotation.DateTimeFormat;
 
 
@@ -11,6 +14,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name="proyecto")
@@ -21,6 +25,7 @@ public class Proyecto implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "proyecto_id")
     private Long id;
 
     @Column(name = "Nombre_Cliente", nullable = false)
@@ -73,30 +78,40 @@ public class Proyecto implements Serializable {
 
     @Column(name = "Otros_Tercer_Nivel")
     private String otrosTercerNivel;
-    @JsonIgnore
+
+
+    @BatchSize(size = 10)
     @ManyToMany
     @JoinTable(
-            name = "Proyecto_PrimerNivel",
+            name = "Proyecto_Primer_nivel",
             joinColumns = @JoinColumn(name = "proyecto_id"),
-            inverseJoinColumns = @JoinColumn(name = "primerNivel_id")
+            inverseJoinColumns = @JoinColumn(name = "primer_nivel_id")
     )
     private List<PrimerNivel> primerNivel;
-    @JsonIgnore
+    //private Set<PrimerNivel> primerNivel; el mismo resultado
+
+    @BatchSize(size = 10)
     @ManyToMany
+    //@JsonBackReference
     @JoinTable(
-            name = "Proyecto_SegundoNivel",
+            name = "proyecto_segundo_nivel",
             joinColumns = @JoinColumn(name = "proyecto_id"),
-            inverseJoinColumns = @JoinColumn(name = "segundoNivel_id")
+            inverseJoinColumns = @JoinColumn(name = "segundo_nivel_id")
     )
     private List<SegundoNivel> segundoNivel;
-    @JsonIgnore
+
+
+
+    @BatchSize(size = 10)
     @ManyToMany
+
     @JoinTable(
-            name = "Proyecto_TercerNivel",
+            name = "proyecto_tercer_nivel",
             joinColumns = @JoinColumn(name = "proyecto_id"),
-            inverseJoinColumns = @JoinColumn(name = "tercerNivel_id")
+            inverseJoinColumns = @JoinColumn(name = "tercer_mivel_id")
     )
     private List<TercerNivel> tercerNivel;
+
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd hh:mm a")
     @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm a")
