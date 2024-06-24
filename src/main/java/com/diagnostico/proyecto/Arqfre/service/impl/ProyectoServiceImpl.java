@@ -62,11 +62,6 @@ public class ProyectoServiceImpl implements IProyectoService {
                     .findFirst()
                     .orElse(p).getTercerNivel());
         });
-
         return proyectos;
-
-        //return repo.findAllByFechaCreacion(startOfDay, endOfDay);
     }
-
-
 }
